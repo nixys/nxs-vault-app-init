@@ -1,0 +1,45 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.OD
+.idea/
+.history/
+
+# cred
+project-cred.json
+state-cred.json
+
+# misc
+*.code-workspace
+*.vscode
+
+# env
+.env
+
+# Local .terraform directories
+**/.terraform/*
+
+# local .tfstate files
+*.tfstate
+*.tfstate.*
+
+# lock files
+.terraform.lock.hcl
+
+# Crash log files
+crash.log
+
+# graph
+graph.svg
+
+# kubeconfig
+kubeconfig_*
+
+# SSL
+ca.crt
+certificate.pem
+key.pem
+vault_certificate.p12
+
+# Vault  cred
+cluster-keys.json
+
+# Generated files
+**/files/**
