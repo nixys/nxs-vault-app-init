@@ -1,11 +1,11 @@
 # vault-init
 
-vault-init is an open source module for terraform. This module create policies, secrets engines, auth backends (certs, jwt, oidc, kubernetes, etc), jwt/oidc roles and identity groups. Also module generate tls certs and jwt keys in specific directory.
+vault-init is an open source module for terraform. This module create policies, secrets engines, auth backends (certs, jwt, oidc, kubernetes, etc), jwt/oidc roles and identity groups. Also, module generate tls certs and jwt keys in specific directory.
 
 # Variables
 
-* `output_files_path`: the path to directorie where save generated tls certs and jwt keys. Default: "./files".
-* `vault_addr`: vault addres.
+* `output_files_path`: the path to directory where save generated tls certs and jwt keys. Default: "./files".
+* `vault_addr`: vault address.
 * `vault_admin_token`: vault admin token.
 * `vault_skip_tls_verify`(optional): set this to true to disable verification of the Vault server's TLS certificate. Default: "false".
 * `policies`: list of policies to create.
