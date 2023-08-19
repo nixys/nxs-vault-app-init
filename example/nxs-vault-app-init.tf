@@ -1,5 +1,5 @@
 module "vault-init" {
-  source = "../vault-init"
+  source = "github.com/nixys/nxs-vault-app-init"
 
   output_files_path = "./files"
 
