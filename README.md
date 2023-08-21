@@ -145,7 +145,7 @@ $ terraform apply
 | `identity_groups.mount_path` | true | | Vault auth backend path |
 | `identity_groups.metadata` | false | | A map of additional metadata to associate with the group |
 
-#### Example
+### Example
 
 Usage example located in this [directory](docs/example).
 
