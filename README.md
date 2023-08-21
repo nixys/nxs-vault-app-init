@@ -2,7 +2,7 @@
 
 ## Introduction
 
-nxs-vault-app-init is a terraform module for Vault initalization.
+nxs-vault-app-init is a Terraform (>= v1.0.0) module for Vault initalization.
 
 ### Features
 
@@ -14,11 +14,21 @@ nxs-vault-app-init is a terraform module for Vault initalization.
 
 ### Who can use the tool
 
-Developers and admins which work with different projects that use Vault.
+* System Administrators
+* DevOps Engineers
+* Developers
+
+Who work with different projects that use Vault.
 
 ## Quickstart
 
-[Set up](#settings) the nxs-vault-app-init terraform file, then init and run module.
+For use this module you need to installed Terraform package. [Set up](#settings) the nxs-vault-app-init Terraform file, then init, plan and run module:
+
+```bash
+$ terraform init
+$ terraform plan
+$ terraform apply
+```
 
 ### Settings
 
@@ -37,13 +47,13 @@ Developers and admins which work with different projects that use Vault.
 | `secrets_engines.type` | true | | Secret engine type |
 | `secrets_engines.options` | false | | Secret engine options |
 | `auth_backends` | true | | List of auth backends |
-| `auth_backends.type` | true | | Auth backend type |
+| `auth_backends.type` | true | | Auth backend type. Must not be equal to "kubernetes", "jwt", "oidc". To use cert auth method, "tls_disable" must be false in the Vault configuration. This is because the certificates are sent through TLS communication itself |
 | `auth_backends.path` | false | | Auth backend path. Default value equal to type |
 | `auth_backends.tune` | false | | Auth backend [tune](https://registry.terraform.io/providers/hashicorp/vault/3.2.1/docs/resources/auth_backend#tune) |
-| `jwt_oidc_auth_backend` | true | | List of jwt/oidc auth backends |
+| `jwt_oidc_auth_backend` | true | | List of jwt/oidc auth backends. Only one of variable (`jwt_oidc_auth_backend.jwks_url`, `jwt_oidc_auth_backend.oidc_discovery_url`, `jwt_oidc_auth_backend.jwt_validation_pubkeys`) must be set for one backend |
 | `jwt_oidc_auth_backend.path` | true | | Auth backend path |
 | `jwt_oidc_auth_backend.type` | false | jwt | Auth backend type |
-| `jwt_oidc_auth_backend.oidc_discovery_url` | false | | the OIDC Discovery URL, without any .well-known component (base path). Cannot be used in combination with `jwt_validation_pubkeys` |
+| `jwt_oidc_auth_backend.oidc_discovery_url` | false | | The OIDC Discovery URL, without any .well-known component (base path). Cannot be used in combination with `jwt_validation_pubkeys` |
 | `jwt_oidc_auth_backend.oidc_discovery_ca_pem` | false | | The CA certificate or chain of certificates, in PEM format, to use to validate connections to the OIDC Discovery URL. If not set, system certificates are used |
 | `jwt_oidc_auth_backend.oidc_client_id` | false | | Client ID used for OIDC backends |
 | `jwt_oidc_auth_backend.oidc_client_secret` | false | | Client Secret used for OIDC backends |
@@ -135,26 +145,20 @@ Developers and admins which work with different projects that use Vault.
 | `identity_groups.mount_path` | true | | Vault auth backend path |
 | `identity_groups.metadata` | false | | A map of additional metadata to associate with the group |
 
-**Note:** Value for `auth_backends.type` variable must not be equal to "kubernetes", "jwt", "oidc".
-
-**Note:** Only one of variable (`jwt_oidc_auth_backend.jwks_url`, `jwt_oidc_auth_backend.oidc_discovery_url`, `jwt_oidc_auth_backend.jwt_validation_pubkeys`) must be set for one backend.
-
-**Note:** Cert auth backend must be enabled in `auth_backends` with the `path`.
-
-**Note:** To use this auth method, "tls_disable" must be false in the Vault configuration. This is because the certificates are sent through TLS communication itself.
-
-**Note:** If the auth backend was not created at the first start, you must manually delete it. The problem is described on the [forum](https://discuss.hashicorp.com/t/terraform-provider-for-vault-is-behaving-like-its-not-idempotent/13945).
-
 #### Example
 
-Usage example located in this [directory](example).
+Usage example located in this [directory](docs/example).
 
 ## Roadmap
 
+Following features are already in backlog for our development team and will be released soon:
+
+* Add LDAP auth backend
 
 ## Feedback
 
 For support and feedback please contact me:
+
 - telegram: [@aarchimaev](https://t.me/aarchimaev)
 - e-mail: a.archimaev@nixys.ru
 
