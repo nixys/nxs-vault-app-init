@@ -57,7 +57,7 @@ $ terraform apply
 | `jwt_oidc_auth_backend.oidc_discovery_ca_pem` | false | | The CA certificate or chain of certificates, in PEM format, to use to validate connections to the OIDC Discovery URL. If not set, system certificates are used |
 | `jwt_oidc_auth_backend.oidc_client_id` | false | | Client ID used for OIDC backends |
 | `jwt_oidc_auth_backend.oidc_client_secret` | false | | Client Secret used for OIDC backends |
-| `jwt_oidc_auth_backend.oidc_response_mode` | false | query | the response mode to be used in the OAuth2 request. Allowed values are "query" and "form_post". If using Vault namespaces, and `oidc_response_mode` is "form_post", then `namespace_in_state` should be set to "false" |
+| `jwt_oidc_auth_backend.oidc_response_mode` | false | query | The response mode to be used in the OAuth2 request. Allowed values are "query" and "form_post". If using Vault namespaces, and `oidc_response_mode` is "form_post", then `namespace_in_state` should be set to "false" |
 | `jwt_oidc_auth_backend.oidc_response_types` | false | ["code"] | List of response types to request. Allowed values are "code" and "id_token". Note: "id_token" may only be used if `oidc_response_mode` is set to form_post |
 | `jwt_oidc_auth_backend.jwks_url` | false | | JWKS URL to use to authenticate signatures. Cannot be used with `oidc_discovery_url` or `jwt_validation_pubkeys` |
 | `jwt_oidc_auth_backend.jwks_ca_pem` | false | | The CA certificate or chain of certificates, in PEM format, to use to validate connections to the JWKS URL. If not set, system certificates are used |
@@ -65,9 +65,9 @@ $ terraform apply
 | `jwt_oidc_auth_backend.bound_issuer` | false | | The value against which to match the iss claim in a JWT |
 | `jwt_oidc_auth_backend.jwt_supported_algs` | false | Vault 1.1.0 defaults to [RS256] but future or past versions of Vault may differ | A list of supported signing algorithms |
 | `jwt_oidc_auth_backend.default_role` | false | | The default role to use if none is provided during login |
-| `jwt_oidc_auth_backend.provider_config` | false | | provider specific handling configuration. All values may be strings, and the provider will convert to the appropriate type when configuring Vault |
+| `jwt_oidc_auth_backend.provider_config` | false | | Provider specific handling configuration. All values may be strings, and the provider will convert to the appropriate type when configuring Vault |
 | `jwt_oidc_auth_backend.local` | false | | Specifies if the auth method is local only |
-| `jwt_oidc_auth_backend.namespace_in_state` | false | | pass namespace in the OIDC state parameter instead of as a separate query parameter. With this setting, the allowed redirect URL(s) in Vault and on the provider side should not contain a namespace query parameter. This means only one redirect URL entry needs to be maintained on the OIDC provider side for all vault namespaces that will be authenticating against it. Defaults to true for new configs |
+| `jwt_oidc_auth_backend.namespace_in_state` | false | | Pass namespace in the OIDC state parameter instead of as a separate query parameter. With this setting, the allowed redirect URL(s) in Vault and on the provider side should not contain a namespace query parameter. This means only one redirect URL entry needs to be maintained on the OIDC provider side for all vault namespaces that will be authenticating against it. Defaults to true for new configs |
 | `jwt_oidc_auth_backend.tune` | false | | Auth backend [tune](https://registry.terraform.io/providers/hashicorp/vault/3.2.1/docs/resources/auth_backend#tune)|
 | `certs_auth_backend` | true | | List of certs auth backends |
 | `certs_auth_backend.name` | true | | Cert name |
@@ -96,7 +96,7 @@ $ terraform apply
 | `vault_tokens.role_name` | false | | The token role name |
 | `vault_tokens.renewable` | false | | Flag to allow to renew this token |
 | `vault_tokens.ttl` | false | | The TTL period of this token |
-| `vault_tokens.explicit_max_ttl` | false | | the explicit max TTL of this token |
+| `vault_tokens.explicit_max_ttl` | false | | The explicit max TTL of this token |
 | `vault_tokens.period` | false | | The period of this token |
 | `vault_tokens.renew_min_lease` | false | | The minimal lease to renew this token |
 | `vault_tokens.renew_increment` | false | | The renew increment |
@@ -108,16 +108,16 @@ $ terraform apply
 | `vault_token_roles.renewable` | false | | Whether to disable the ability of the token to be renewed past its initial TTL |
 | `vault_token_roles.path_suffix` | false | | Tokens created against this role will have the given suffix as part of their path in addition to the role name |
 | `vault_token_roles.token_period` | false | | If set, indicates that the token generated using this role should never expire. The token should be renewed within the duration specified by this value. At each renewal, the token's TTL will be set to the value of this field. Specified in seconds |
-| `vault_token_roles.token_ttl` | false | | the incremental lifetime for generated tokens in number of seconds. Its current value will be referenced at renewal time |
+| `vault_token_roles.token_ttl` | false | | The incremental lifetime for generated tokens in number of seconds. Its current value will be referenced at renewal time |
 | `vault_token_roles.token_max_ttl` | false | | The maximum lifetime for generated tokens in number of seconds. Its current value will be referenced at renewal time |
 | `vault_token_roles.token_explicit_max_ttl` | false | | If set, will encode an explicit max TTL onto the token in number of seconds. This is a hard cap even if `token_ttl` and `token_max_ttl` would otherwise allow a renewal |
-| `jwt_oidc_roles` | true | | list of jwt/oidc roles |
+| `jwt_oidc_roles` | true | | List of jwt/oidc roles |
 | `jwt_oidc_roles.name` | true | | Role name |
 | `jwt_oidc_roles.path` | true | | Auth backend path |
 | `jwt_oidc_roles.type` | false | | Role type |
 | `jwt_oidc_roles.user_claim` | true | | The claim to use to uniquely identify the user; this will be used as the name for the Identity entity alias created due to a successful login |
 | `jwt_oidc_roles.bound_claims` | false | | If set, a map of claims to values to match against. A claim's value must be a string, which may contain one value or multiple comma-separated values, e.g. "red" or "red,green,blue" |
-| `jwt_oidc_roles.bound_audiences` | false | | list of aud claims to match against. Any match is sufficient |
+| `jwt_oidc_roles.bound_audiences` | false | | List of aud claims to match against. Any match is sufficient |
 | `jwt_oidc_roles.bound_subject` | false | | If set, requires that the sub claim matches this value |
 | `jwt_oidc_roles.bound_claims_type` | false | | How to interpret values in the claims/values map (bound_claims): can be either string (exact match) or glob (wildcard match). Requires Vault 1.4.0 or above |
 | `jwt_oidc_roles.claim_mappings` | false | | If set, a map of claims (keys) to be copied to specified metadata fields (values) |
