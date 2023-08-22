@@ -73,7 +73,7 @@ $ terraform apply
 | `certs_auth_backend.name` | true | | Cert name |
 | `certs_auth_backend.policies` | true | | List of policies |
 | `certs_auth_backend.path` | false | cert | Certs auth backend path |
-| `certs_auth_backend.tls_self_signed_cert` | true | | cert info |
+| `certs_auth_backend.tls_self_signed_cert` | true | | Cert info |
 | `certs_auth_backend.tls_self_signed_cert.common_name` | false | | Cert common name |
 | `certs_auth_backend.tls_self_signed_cert.organization` | false | | Cert organization |
 | `certs_auth_backend.tls_self_signed_cert.allowed_uses` | true | | List of [keywords](https://registry.terraform.io/providers/hashicorp/tls/3.2.1/docs/resources/self_signed_cert#allowed_uses) each describing a use that is permitted for the issued certificate |
