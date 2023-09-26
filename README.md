@@ -1,3 +1,5 @@
+![nxs-vault-app-init](https://github.com/nixys/nxs-vault-app-init/assets/23610059/4244107d-3b0a-41b1-9e85-8ad3980db2ae)
+
 # nxs-vault-app-init
 
 ## Introduction
