@@ -1,10 +1,10 @@
-![nxs-vault-app-init](https://github.com/nixys/nxs-vault-app-init/assets/23610059/4244107d-3b0a-41b1-9e85-8ad3980db2ae)
+![nxs-vault-app-init](https://github.com/nixys/nxs-vault-app-init/assets/23610059/60ccb13d-391e-4bb4-8080-b2b4c80883ab)
 
 # nxs-vault-app-init
 
 ## Introduction
 
-nxs-vault-app-init is a Terraform (>= v1.0.0) module for Vault initalization.
+nxs-vault-app-init is a Terraform (>= v1.0.0) module for Vault initialization.
 
 ### Features
 
